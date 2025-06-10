@@ -1,6 +1,6 @@
 import os
 import shutil
-from generate_page import generate_page
+from generate_page import generate_pages_recursive
 from copystatic import copy_paste
 
 
@@ -16,6 +16,6 @@ def main():
 	copy_paste(path_from, path_to)
 
 	print("Generating page...")
-	generate_page("./content/index.md", "./template.html", "./public/index.html")
+	generate_pages_recursive()
 
 main()
