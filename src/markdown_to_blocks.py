@@ -29,7 +29,6 @@ def block_to_block_type(markdown):
 	if markdown.startswith("```") and markdown.endswith("```") and len(markdown_lines) > 1:
 		return BlockType.CODE
 	
-	
 	quote = True
 	unli = True
 	orli_count = 1
@@ -39,7 +38,7 @@ def block_to_block_type(markdown):
 		if line == "":
 			continue
 		true_list_count += 1
-		if not line.startswith("> ") and quote:
+		if not line.startswith(">") and quote:
 			quote = False
 		if not line.startswith("- ") and unli:
 			unli = False

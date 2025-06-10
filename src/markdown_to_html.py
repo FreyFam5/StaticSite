@@ -24,8 +24,8 @@ def block_to_html_node(block, block_type):
 			string_list = []
 			lines = block.split("\n")
 			for line in lines:
-				string_list.append(line[2:])
-			new_block = " ".join(string_list)
+				string_list.append(line[2:] + "<br />")
+			new_block = "".join(string_list)
 			return ParentNode("blockquote", text_to_children(new_block))
 		
 		# Just takes the text as is and puts it as a child of the new code parent

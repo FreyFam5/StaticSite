@@ -1,10 +1,21 @@
-#from textnode import *
-from inline_markdown import *
+import os
+import shutil
+from generate_page import generate_page
+from copystatic import copy_paste
 
+
+path_from = "./static"
+path_to = "./public"
 
 def main():
-	text = "This is **text** with an _italic_ word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)"
-	print(text_to_textnodes(text))
+	print("Deleting public directory...")
+	if os.path.exists(path_to):
+		shutil.rmtree(path_to)
 
+	print("Copying static files to public directory...")
+	copy_paste(path_from, path_to)
+
+	print("Generating page...")
+	generate_page("./content/index.md", "./template.html", "./public/index.html")
 
 main()
