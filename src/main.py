@@ -16,6 +16,6 @@ def main():
 	copy_paste(path_from, path_to)
 
 	print("Generating page...")
-	generate_pages_recursive()
+	generate_pages_recursive("./content", "./template.html", "./public")
 
 main()

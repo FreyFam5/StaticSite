@@ -1,13 +1,14 @@
 import os
+from pathlib import Path
 from markdown_to_html import markdown_to_html_node
 
 
 def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
-	paths = os.listdir(dir_path_content)
-	for path in paths:
+	for path in os.listdir(dir_path_content):
 		path_from_name = f"{dir_path_content}/{path}"
 		path_to_name = f"{dest_dir_path}/{path}"
 		if os.path.isfile(path_from_name):
+			path_to_name = Path(path_to_name).with_suffix(".html")
 			generate_page(path_from_name, template_path, path_to_name)
 		else:
 			generate_pages_recursive(path_from_name, template_path, path_to_name)
