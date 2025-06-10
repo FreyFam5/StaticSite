@@ -1,6 +1,15 @@
 import re
-from textnode import *
-from extract_markdown import *
+from textnode import TextType, TextNode
+
+
+def text_to_textnodes(text):
+	node = TextNode(text, TextType.TEXT)
+	new_nodes = split_nodes_delimiter([node], "**", TextType.BOLD)
+	new_nodes = split_nodes_delimiter(new_nodes, "_", TextType.ITALIC)
+	new_nodes = split_nodes_delimiter(new_nodes, "`", TextType.CODE)
+	new_nodes = split_nodes_image(new_nodes)
+	new_nodes = split_nodes_link(new_nodes)
+	return new_nodes
 
 ## Takes a list of text nodes and reutrns another list of text nodes that have their correct text types
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
@@ -80,3 +89,11 @@ def split_nodes_link(old_nodes):
 			else: # Other wise it will just create a normal text node
 				new_nodes.append(TextNode(text, TextType.TEXT))
 	return new_nodes
+
+## Uses regex to take out the image (![image alt text](https://i.imgur.com/zjjcJKZ.png))
+def extract_markdown_images(text):
+	return re.findall(r"!\[([^\[\]]*)\]\(([^\)\(]*)\)", text)
+
+## Uses regex to take out the link ([link text](https://bott.dev))
+def extract_markdown_links(text):
+	return re.findall(r"(?<!!)\[([^\[\]]*)\]\(([^\)\(]*)\)", text)

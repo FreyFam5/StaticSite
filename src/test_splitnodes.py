@@ -1,5 +1,5 @@
 import unittest
-from splitnodes import *
+from inline_markdown import *
 from textnode import *
 
 class TestSplitNodes(unittest.TestCase):

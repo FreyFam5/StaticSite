@@ -1,5 +1,6 @@
 import unittest
-from htmlnode import HTMLNode
+from htmlnode import *
+from textnode import *
 
 
 test_dict = {

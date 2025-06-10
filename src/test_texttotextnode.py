@@ -1,5 +1,5 @@
 import unittest
-from texttotextnodes import *
+from inline_markdown import *
 
 class TestTextToTextNodes(unittest.TestCase):
 	def test_texttotextnodes(self):
