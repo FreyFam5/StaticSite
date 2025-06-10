@@ -6,7 +6,7 @@ from copystatic import copy_paste
 
 
 path_from = "./static"
-path_to = "./public"
+path_to = "./docs"
 
 
 def main():
@@ -22,6 +22,6 @@ def main():
 	copy_paste(path_from, path_to)
 
 	print("Generating page...")
-	generate_pages_recursive("./content", "./template.html", "./public", basepath)
+	generate_pages_recursive("./content", "./template.html", path_to, basepath)
 
 main()
